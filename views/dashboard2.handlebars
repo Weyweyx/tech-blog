@@ -1,0 +1,65 @@
+<div>
+     <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            {{#if loggedIn}}
+            <a href="/logout">Logout</a>
+            {{else}}
+            <a href="/login">Login</a>
+            {{/if}}
+        </nav>
+    </header>
+    <main>
+        <button id="newpostbutton">Create New Post</button>
+        <div>
+            <form id="newpostform">
+                <div>
+                    <label>Title:</label>
+                    <input type="text" name="title">
+
+                </div>
+                <div>
+                    <label>Content</label>
+                    <textarea name="content"></textarea>
+
+                </div>
+                <div>
+                    <button type="submit">Create</button>
+                </div>
+            </form>
+        </div>
+        <div>
+            <h1>
+                Posts
+            </h1>
+            <div id="postcontainer">
+                {{#each posts}}
+                <div class="postedit" id="postedit-{{id}}">
+                    {{title}}
+                {{content}}
+                <div class="postbuttons" id="postbuttons-{{@index}}">
+                    <button class="postbuttonedit" id="postbuttonedit-{{@index}}">Edit</button>
+                    <button class="postbuttondelete" id="postbuttondelete-{{@index}}">Delete</button>
+                </div>
+                <div class="posteditformcontainer" id="posteditformcontainer-{{@index}}">
+                    <form class="posteditform" id="posteditform-{{id}}">
+                        <div>
+                            <label>title:</label>
+                            <input type="text" name = "title" value="{{title}}">
+                        </div>
+                        <div>
+                            <label>content:</label>
+                            <textarea name="content">{{content}}</textarea>
+                        </div>
+                        <div>
+                            <button type="submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </main>
+</div>
